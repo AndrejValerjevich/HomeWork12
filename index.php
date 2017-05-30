@@ -37,9 +37,9 @@ else {
 #region //Запрос к БД, его обработка и подготовка
 include 'connection.php';
 
-$sql = "SELECT * FROM books WHERE name LIKE '%$name%' AND isbn LIKE '%$isbn%' AND author LIKE '%$author%'";
+$sql = "SELECT * FROM books WHERE name LIKE ? AND isbn LIKE ? AND author LIKE ?";
 $statement = $pdo->prepare($sql);
-$statement->execute();
+$statement->execute(["{%$name%}","{%$isbn%}","{%$author%}"]);
 
 
 #endregion
